@@ -5,7 +5,7 @@ sdk: org.freedesktop.Sdk
 finish-args:
   - --share=ipc
   - --socket=wayland
-  - --socket=fallback-x11
+  - --socket=x11
   # For accessing network printers
   - --share=network
   # For accessing usb printers
@@ -17,6 +17,8 @@ finish-args:
   - --filesystem=/run/media
   # For umount
   - --system-talk-name=org.freedesktop.UDisks2
+  # Qt: Prefer x11 to wayland
+  - --env=QT_QPA_PLATFORM=xcb;wayland
 command: start-cura-flatpak.sh
 modules:
   - name: cura
